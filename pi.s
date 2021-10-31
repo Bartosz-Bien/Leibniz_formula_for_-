@@ -1,9 +1,9 @@
 # ==============================
 #
-# Imie:		Bartosz
-# Nazwisko:	Bien
-# Nr albumu:	407460
-# Grupa:	Inzynieria Obliczeniowa, gr. 1
+# Author: Bartosz Bien
+#
+# This file allows to compute the apprixomated value of Pi
+# More details in the README.md file
 #
 # =============================
 #
@@ -37,17 +37,17 @@ main:
 
 # ===============================
 #
-# my_pi - oblicza liczbe pi ze wzoru Leibniza
+# my_pi - the function computes Pi from the Leibniz formula
 #
-#	Wejscie:	loop_counter - liczba przejsc petli
-#	Wyjscie:	Explicit brak, ale rezultat obliczen podzielony przez 4 w %r13
+#	Input:		loop_counter - counter of iterations
+#	Output:		None, but the rezult of computations divided by 4 is stored in the register %r13
 #
 # ===============================
 
 	.type my_pi, @function
 
 my_pi:
-	# warunki poczatkowe
+	# starting conditions
 	mov loop_counter, %rax	
 	mov $2, %rbx
 	xor %rdx, %rdx
@@ -57,7 +57,7 @@ my_pi:
 	mov $1, %r14	# mianownik
 	xor %r13, %r13	# 4*pi -> wynik
 loop:
-	# zwiekszam licznik o 10000
+	# increment counter 100000 times
 	# div
 	mov %r14, %rbx
 	mov $100000, %rax 
@@ -67,7 +67,7 @@ loop:
 	# add
 	add %rax, %r13
 
-	# mianownik += 2
+	# denominator += 2
 	mov $2, %r8	
 	add %r8, %r14
 
@@ -77,17 +77,17 @@ loop:
 	xor %rdx, %rdx
 	div %rbx
 
-	#odejmij
+	#sub
 	sub %rax, %r13
 
-	# mianownik += 2
+	# denominator += 2
 	mov $2, %r8
 	add %r8, %r14
 
 	dec %r15
 	jnz loop
 end:
-	# razy 4
+	# times 4
 	mov %r13, %rbx
 	mov $4, %rax
 	xor %rdx, %rdx
