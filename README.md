@@ -26,7 +26,7 @@ Project is: _complete_. This version works well.
 
 
 ## Room for Improvement
-THe project is finished and I don't think it will be modified.
+The project is finished and I don't think it will be modified.
 
 
 ## Contact
